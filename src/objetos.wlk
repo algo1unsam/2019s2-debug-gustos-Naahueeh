@@ -1,6 +1,7 @@
 /* colores */
 object rojo { method esFuerte() { return true } }
 object verde { method esFuerte() { return true } }
+object naranja { method esFuerte() { return true } }
 object celeste { method esFuerte() { return false } } 
 object pardo { method esFuerte() { return false } }
 
@@ -31,9 +32,9 @@ object biblioteca {
 }
 
 object munieco {
-	var _peso 
+	var _peso
 	
-	method color() { return _color }
+	method color() { return celeste }
 	method material() { return vidrio }
 	method peso() { return _peso }
 	method setPeso(peso) { _peso = peso }
@@ -49,7 +50,6 @@ object placa {
 	method peso() { return _peso }
 	method setPeso(peso) { _peso = peso }
 }
-
 
 
 
