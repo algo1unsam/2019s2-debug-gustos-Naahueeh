@@ -6,11 +6,28 @@ object celeste { method esFuerte() { return false } }
 object pardo { method esFuerte() { return false } }
 
 /* materiales */
-object cobre { method brilla() { return true } }
-object vidrio { method brilla() { return true } }
-object lino { method brilla() { return false } }
-object madera { method brilla() { return false } }
-object cuero { method brilla() { return false } }
+object cobre { method brilla() { return true } method conduce() { return true }}
+object vidrio { method brilla() { return true } method conduce() { return false }}
+object lino { method brilla() { return false } method conduce() { return false } }
+object madera { method brilla() { return false } method conduce() { return false } }
+object cuero { method brilla() { return false } method conduce() { return false } }
+object plomo{
+	var _brilla=true
+	var _conduce=false
+	
+	method oxidate(){
+		_brilla=false
+		_conduce=false
+	} 
+	
+	method cromate(){
+		_brilla=true
+		_conduce=true
+	}
+	
+	method brilla() { return _brilla } 
+	method conduce() { return _conduce } 
+}
 
 /* objetos */
 object remera {
@@ -51,6 +68,32 @@ object placa {
 	method setPeso(peso) { _peso = peso }
 }
 
+object arito{
+	method color() { return celeste }
+	method material() { return cobre }
+	method peso() { return 180 }	
+}
+
+object banquito {
+	var _color=naranja
+	
+	method color() { return _color }
+	method setColor(color) { _color = color }
+	method material() { return madera }
+	method peso() { return 1700 }
+}
+
+object cajita{
+	var _material
+	var _peso
+	
+	method color() { return rojo }
+	method material() { return _material }
+	method setMaterial(material) { _material = material }
+	method peso() { return _peso }
+	method setPeso(peso) { _peso = 400 + peso.peso()}
+		
+}
 
 
 
