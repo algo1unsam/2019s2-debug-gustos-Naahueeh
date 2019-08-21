@@ -92,7 +92,7 @@ test "Bolichito banquito en mostrador y una cajita de cobre con una pelota dentr
 	bolichito.ponerEnMostrador(banquito)
 	bolichito.ponerEnVidriera(cajita)
 	cajita.setMaterial(cobre)
-	cajita.setPeso(pelota)
+	cajita.setObjeto(pelota)
 	
 	assert.that(not bolichito.estaDesequilibrado() and bolichito.tieneAlgoDeColor(naranja))
 }
@@ -101,7 +101,7 @@ test "Bolichito banquito en mostrador y una cajita de cobre con una pelota dentr
 	bolichito.ponerEnMostrador(banquito)
 	bolichito.ponerEnVidriera(cajita)
 	cajita.setMaterial(cobre)
-	cajita.setPeso(arito)
+	cajita.setObjeto(arito)
 	
 	assert.that(bolichito.estaDesequilibrado() and bolichito.tieneAlgoDeColor(naranja))
 }
@@ -110,7 +110,7 @@ test "Bolichito banquito en mostrador y una cajita de cobre con una pelota dentr
 	bolichito.ponerEnMostrador(banquito)
 	bolichito.ponerEnVidriera(cajita)
 	cajita.setMaterial(cobre)
-	cajita.setPeso(arito)
+	cajita.setObjeto(arito)
 	banquito.setColor(verde)
 
 	assert.that(bolichito.estaDesequilibrado() and not bolichito.tieneAlgoDeColor(naranja))
@@ -121,7 +121,8 @@ test "Un bolichito con un muñeco de 500 gramos en mostrador y una cajita de plo
 	munieco.setPeso(500)
 	bolichito.ponerEnVidriera(cajita)
 	cajita.setMaterial(plomo)
-	cajita.setPeso(arito)
+	plomo.tuEstado(natural)
+	cajita.setObjeto(arito)
 
 	assert.that(bolichito.esBrillante() and not bolichito.tieneLuz())
 }
@@ -131,8 +132,8 @@ test "Un bolichito con un muñeco de 500 gramos en mostrador y una cajita de plo
 	munieco.setPeso(500)
 	bolichito.ponerEnVidriera(cajita)
 	cajita.setMaterial(plomo)
-	cajita.material().cromate()
-	cajita.setPeso(arito)
+	plomo.tuEstado(cromado)
+	cajita.setObjeto(arito)
 
 	assert.that(bolichito.esBrillante() and bolichito.tieneLuz())
 }
@@ -142,8 +143,24 @@ test "Un bolichito con un muñeco de 500 gramos en mostrador y una cajita de plo
 	munieco.setPeso(500)
 	bolichito.ponerEnVidriera(cajita)
 	cajita.setMaterial(plomo)
-	cajita.material().oxidate()
-	cajita.setPeso(arito)
+	plomo.tuEstado(oxidado)
+	cajita.setObjeto(arito)
 
 	assert.notThat(bolichito.esBrillante() and bolichito.tieneLuz())
 }
+
+/*Hacer un test que pruebe que una cajita de cobre con un muñeco que pesa 100, primero 
+ * pesa quinientos y si cambio el peso del muñeco entonces pesaría 800*/ 
+ 
+test "Muñequito y cajita"{
+	cajita.setMaterial(cobre)
+	cajita.setObjeto(munieco)
+	munieco.setPeso(100)
+	
+	assert.equals(500,cajita.peso())
+	
+	munieco.setPeso(400)
+	
+	assert.equals(800,cajita.peso())
+		
+} 

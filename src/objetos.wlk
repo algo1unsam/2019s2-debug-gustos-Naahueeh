@@ -12,21 +12,29 @@ object lino { method brilla() { return false } method conduce() { return false }
 object madera { method brilla() { return false } method conduce() { return false } }
 object cuero { method brilla() { return false } method conduce() { return false } }
 object plomo{
-	var _brilla=true
-	var _conduce=false
+	var _estado
 	
-	method oxidate(){
-		_brilla=false
-		_conduce=false
-	} 
-	
-	method cromate(){
-		_brilla=true
-		_conduce=true
+	method tuEstado(estado){
+		_estado=estado
 	}
 	
-	method brilla() { return _brilla } 
-	method conduce() { return _conduce } 
+	method brilla() { return _estado.brillas()} 
+	method conduce() { return _estado.conducis() } 
+}
+
+object oxidado{
+	method brillas() { return false } 
+	method conducis() { return false } 	
+}
+
+object cromado{
+	method brillas() { return true } 
+	method conducis() { return true } 	
+}
+
+object natural{
+	method brillas() { return true } 
+	method conducis() { return false } 	
 }
 
 /* objetos */
@@ -85,13 +93,13 @@ object banquito {
 
 object cajita{
 	var _material
-	var _peso
+	var _objeto
 	
 	method color() { return rojo }
 	method material() { return _material }
 	method setMaterial(material) { _material = material }
-	method peso() { return _peso }
-	method setPeso(peso) { _peso = 400 + peso.peso()}
+	method peso() { return 400 + _objeto.peso() }
+	method setObjeto(objeto) { _objeto = objeto}
 		
 }
 
